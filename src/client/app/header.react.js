@@ -21,6 +21,7 @@ export default class Header extends Component {
         <ul>
           <li><Link to="home">{msg('app.header.home')}</Link></li>
           <li><Link to="todos">{msg('app.header.todos')}</Link></li>
+          <li><Link to="decisions">{msg('app.header.decisions')}</Link></li>
           <li><Link to="examples">{msg('app.header.examples')}</Link></li>
           <li><Link to="me">{msg('app.header.me')}</Link></li>
           {!isLoggedIn &&
@@ -30,5 +31,4 @@ export default class Header extends Component {
       </header>
     );
   }
-
 }

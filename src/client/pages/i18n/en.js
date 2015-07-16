@@ -17,6 +17,9 @@ export default {
   examples: {
     title: 'Examples'
   },
+  decisions: {
+    title: 'Decisions'
+  },
   todos: {
     title: 'Todos'
   },

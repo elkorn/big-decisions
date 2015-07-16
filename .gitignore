@@ -1,6 +1,7 @@
 *.sublime-workspace
 .DS_Store
 .idea
+.tern-port
 bower_components
 build
 coverage

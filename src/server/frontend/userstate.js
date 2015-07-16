@@ -17,7 +17,8 @@ export default function userState() {
 // Gracefully settle all promises, ignore failed.
 function loadUserData(req) {
   const dataSources = [
-    loadTodos()
+    loadTodos(),
+    loadDecisions()
   ];
 
   return Promise.settle(dataSources).then(receivedData =>
@@ -40,6 +41,22 @@ function loadTodos() {
       };
 
       resolve(todos);
+    }, 20);
+  });
+}
+
+function loadDecisions() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const decisions = {
+        decisions: {
+          list: [
+            {id: 1, title: 'Go for a holiday', score: 12}
+          ]
+        }
+      };
+
+      resolve(decisions);
     }, 20);
   });
 }

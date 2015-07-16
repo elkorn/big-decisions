@@ -24,6 +24,16 @@ export default {
       {id: 1, title: 'consider ‘stop doing’ app'}
     ]
   },
+  decisions: {
+    editables: {},
+    newDecision: {
+      title: '',
+      score: 0
+    },
+    list: [
+      {id: 1, title: 'go to work', score: 1}
+    ]
+  },
   users: {
     // User can be authenticated on server, and then viewer must be defined.
     viewer: null

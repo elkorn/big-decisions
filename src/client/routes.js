@@ -6,6 +6,7 @@ import Me from './pages/me.react';
 import NotFound from './pages/notfound.react';
 import React from 'react';
 import Todos from './pages/todos.react';
+import Decisions from './pages/decisions.react';
 import {DefaultRoute, NotFoundRoute, Route} from 'react-router';
 
 export default (
@@ -16,5 +17,6 @@ export default (
     <Route handler={Login} name="login" />
     <Route handler={Me} name="me" />
     <Route handler={Todos} name="todos" />
+    <Route handler={Decisions} name="decisions" />
   </Route>
 );
