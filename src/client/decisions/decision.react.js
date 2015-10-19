@@ -14,7 +14,6 @@ export default class Decision extends Component {
 
   render() {
     const {disabled, editable, decision} = this.props;
-      console.log(decision);
 
     const editableFor = (propName) =>
       <Editable
@@ -29,7 +28,8 @@ export default class Decision extends Component {
 
     return (
         <li className="decision-item">
-        {editableFor('title')}
+          {editableFor('title')}
+        <div>({decision.score})</div>
           <button onClick={() => actions.upvote(decision)}>+1</button>
           <button onClick={() => actions.downvote(decision)}>-1</button>
         </li>

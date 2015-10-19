@@ -2,6 +2,7 @@
 import Component from '../components/component.react';
 import DocumentTitle from 'react-document-title';
 import List from '../decisions/list.react';
+import NewDecision from '../decisions/newdecision.react';
 // import NewTodo from '../todos/newtodo.react';
 import React from 'react';
 // import ToCheck from './tocheck.react';
@@ -28,6 +29,7 @@ export default class Decisions extends Component {
             pendingActions={pendingActions}
             decisions={list}
           />
+          <NewDecision decision={decisions.get('newDecision')} />
         </div>
       </DocumentTitle>
     );

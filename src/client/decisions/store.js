@@ -1,5 +1,5 @@
 import * as actions from './actions';
-import Todo from './decision';
+import Decision from './decision';
 import getRandomString from '../lib/getrandomstring';
 import {Range} from 'immutable';
 import {register} from '../dispatcher';
@@ -8,13 +8,13 @@ import {decisionsCursor} from '../state';
 export const dispatchToken = register(({action, data}) => {
 
   switch (action) {
-    case actions.addHundredTodos:
-      todosCursor(todos => {
-        return todos.update('list', list => list.withMutations(list => {
+    case actions.addHundredDecisions:
+      decisionsCursor(decisions => {
+        return decisions.update('list', list => list.withMutations(list => {
           Range(0, 100).forEach(i => {
             const id = getRandomString();
-            list.push(new Todo({
-              id,
+            list.push(new Decision({
+              id: id,
               title: `Item #${id}`
             }));
           });
@@ -22,59 +22,59 @@ export const dispatchToken = register(({action, data}) => {
       });
       break;
 
-    case actions.addTodo:
-      todosCursor(todos => {
-        return todos
+    case actions.addDecision:
+      decisionsCursor(decisions => {
+        return decisions
           .update('list', (list) => {
             // Always denote what data represents. Favour readability over wtf.
             // Try to resist being smart ass. Fuck pride.
             // https://www.youtube.com/watch?v=ruhFmBrl4GM
-            const todo = data;
-            const newTodo = todo.merge({
+            const decision = data;
+            const newDecision = decision.merge({
               id: getRandomString()
             });
-            return list.push(newTodo);
+            return list.push(newDecision);
           })
-          .set('newTodo', new Todo);
+          .set('newDecision', new Decision());
       });
       break;
 
     case actions.clearAll:
-      todosCursor(todos => {
-        return todos
+      decisionsCursor(decisions => {
+        return decisions
           .update('list', list => list.clear())
-          .set('newTodo', new Todo);
+          .set('newDecision', new Decision());
       });
       break;
 
-    case actions.deleteTodo:
-      todosCursor(todos => {
-        const todo = data;
-        return todos.update('list', list => list.delete(list.indexOf(todo)));
+    case actions.deleteDecision:
+      decisionsCursor(decisions => {
+        const decision = data;
+        return decisions.update('list', list => list.delete(list.indexOf(decision)));
       });
       break;
 
     case actions.onEditableSave:
-      todosCursor(todos => {
+      decisionsCursor(decisions => {
         const {id, name, value} = data;
-        return todos.update('list', list => {
-          const idx = list.findIndex(todo => todo.id === id);
+        return decisions.update('list', list => {
+          const idx = list.findIndex(decision => decision.id === id);
           return list.setIn([idx, name], value);
         });
       });
       break;
 
     case actions.onEditableState:
-      todosCursor(todos => {
+      decisionsCursor(decisions => {
         const {id, name, state} = data;
-        return todos.setIn(['editables', id, name], state);
+        return decisions.setIn(['editables', id, name], state);
       });
       break;
 
-    case actions.onNewTodoFieldChange:
-      todosCursor(todos => {
+    case actions.onNewDecisionFieldChange:
+      decisionsCursor(decisions => {
         const {name, value} = data;
-        return todos.setIn(['newTodo', name], value);
+        return decisions.setIn(['newDecision', name], value);
       });
       break;
 
