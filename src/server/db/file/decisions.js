@@ -16,7 +16,6 @@ function add(decision) {
       }
 
       const decisions = JSON.parse(decisionsText);
-      console.log(decisions);
       decisions.push(decision);
       fs.writeFile(filePath, JSON.stringify(decisions, null, '\t'), err => {
         if (err) {

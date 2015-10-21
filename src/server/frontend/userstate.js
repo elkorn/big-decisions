@@ -1,11 +1,13 @@
 import Promise from 'bluebird';
 import Immutable from 'immutable';
 
-import * as decisions from '../state/decisions';
+import * as db from '../db';
 
 // Example how initialState, which is the same for all users, is enriched with
 // user state. With state-less Flux, we don't need instances.
-export default function userState() {
+export
+default
+function userState() {
 
   return (req, res, next) => {
     loadUserData(req).then(loadedData => {
@@ -23,11 +25,12 @@ function loadUserData(req) {
     loadDecisions()
   ];
 
-  return Promise.settle(dataSources).then(receivedData =>
-    receivedData
+  return Promise.settle(dataSources).then(receivedData => {
+    console.log(receivedData.map(p => p.value()));
+    return receivedData
       .filter(promise => promise.isFulfilled())
-      .map(promise => promise.value())
-  );
+      .map(promise => promise.value());
+  });
 }
 
 // Simulate async action.
@@ -36,9 +39,10 @@ function loadTodos() {
     setTimeout(() => {
       const todos = {
         todos: {
-          list: [
-            {id: 2, title: 'relax'}
-          ]
+          list: [{
+            id: 2,
+            title: 'relax'
+          }]
         }
       };
 
@@ -48,17 +52,5 @@ function loadTodos() {
 }
 
 function loadDecisions() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const decisions = {
-        decisions: {
-          list: [
-            {id: 1, title: 'Go for a holiday', score: 12}
-          ]
-        }
-      };
-
-      resolve(decisions);
-    }, 20);
-  });
+  return db.get();
 }

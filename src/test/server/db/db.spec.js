@@ -1,15 +1,19 @@
 import chai, {expect} from 'chai';
 import chaiImmutable from 'chai-immutable';
 import immutable from 'immutable';
-import db from 'server/db';
+import * as db from 'server/db';
 
 chai.use(chaiImmutable);
 
 describe('db module', () => {
 
+  before(() => {
+    db.initialize('file');
+  });
+
   it('should expose submodules', () => {
-    expect(db).to.have.property('file');
-    expect(db.file).to.have.property('decisions');
+    const theDb = db.get();
+    expect(theDb).to.have.property('decisions');
   });
 
 });
