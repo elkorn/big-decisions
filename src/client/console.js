@@ -1,4 +1,4 @@
-import state from './state';
+import * as state from './state';
 
 const isBrowser = process.env.IS_BROWSER;
 

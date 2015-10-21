@@ -3,7 +3,6 @@ import {authCursor} from '../state';
 import {register} from '../dispatcher';
 
 export const dispatchToken = register(({action, data}) => {
-
   switch (action) {
     case actions.loginError:
       authCursor(auth => {
@@ -19,5 +18,4 @@ export const dispatchToken = register(({action, data}) => {
       });
       break;
   }
-
 });

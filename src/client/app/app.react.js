@@ -11,6 +11,7 @@ import {measureRender} from '../console';
 import '../auth/store';
 import '../examples/store';
 import '../todos/store';
+import '../decisions/store';
 import '../users/store';
 
 export default class App extends Component {

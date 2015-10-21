@@ -5,6 +5,6 @@ import {measureRender} from './console';
 
 const app = document.getElementById('app');
 
-Router.run(routes, Router.HistoryLocation, (Handler) => {
-  measureRender(done => React.render(<Handler />, app, done));
+Router.run(routes, Router.HistoryLocation, (Root) => {
+  measureRender(done => React.render(<Root />, app, done));
 });

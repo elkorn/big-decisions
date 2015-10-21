@@ -20,9 +20,7 @@ export default {
     },
     // Initial state can contain prefetched lists and maps. List for array, map
     // for object. We can also use sortedByTitle list, if we need sorted data.
-    list: [
-      {id: 1, title: 'consider ‘stop doing’ app'}
-    ]
+    list: require('./state/todos')
   },
   decisions: {
     editables: {},
@@ -30,9 +28,7 @@ export default {
       title: '',
       score: 0
     },
-    list: [
-      {id: 1, title: 'go to work', score: 1}
-    ]
+    list: require('./state/decisions')
   },
   users: {
     // User can be authenticated on server, and then viewer must be defined.
