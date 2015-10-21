@@ -1,4 +1,5 @@
 import auth from './auth';
+import decisions from './decisions';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
@@ -11,6 +12,7 @@ app.use(bodyParser.json());
 
 // Add auth module to handle user authentication
 app.use('/auth', auth);
+app.use('/decisions', decisions);
 
 app.on('mount', () => {
   console.log('Api is available at %s', app.mountpath);

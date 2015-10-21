@@ -10,6 +10,9 @@
     "start": "node src/server",
     "test": "gulp test"
   },
+  "node": {
+    "fs": "empty"
+  },
   "engines": {
     "iojs": ">= 2.2.x",
     "node": "0.10.x"
@@ -26,6 +29,7 @@
     "chai-immutable": "^1.1.1",
     "classnames": "^2.1.1",
     "compression": "^1.4.0",
+    "continuation-local-storage": "^3.1.4",
     "cors": "^2.6.0",
     "css-loader": "^0.15.2",
     "del": "^1.1.1",
@@ -76,6 +80,7 @@
     "serve-favicon": "^2.2.0",
     "style-loader": "^0.12.0",
     "stylus-loader": "^1.0.0",
+    "then-request": "^2.1.1",
     "url-loader": "^0.5.5",
     "validator": "^3.34.0",
     "webpack": "^1.9.5",

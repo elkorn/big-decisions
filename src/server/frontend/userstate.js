@@ -1,6 +1,8 @@
 import Promise from 'bluebird';
 import Immutable from 'immutable';
 
+import * as decisions from '../state/decisions';
+
 // Example how initialState, which is the same for all users, is enriched with
 // user state. With state-less Flux, we don't need instances.
 export default function userState() {
