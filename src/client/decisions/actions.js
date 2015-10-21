@@ -7,7 +7,6 @@ from '../dispatcher';
 
 export
 const MAX_DECISION_TITLE_LENGTH = 42;
-
 export
 function addDecision(decision) {
   const title = decision.title.trim();
