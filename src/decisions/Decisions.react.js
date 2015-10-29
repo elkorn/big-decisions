@@ -39,7 +39,6 @@ class DecisionsComponent extends React.Component {
   }
 
   confirmNewDecision() {
-    console.log('confirming decision');
     this.setState(Object.assign(this.state, {
       isAddingDecision: false
     }));
@@ -49,8 +48,8 @@ class DecisionsComponent extends React.Component {
     const newDecisionComp = this.state.isAddingDecision ? (
       <section className="decisions__controls__new">
         <input type="text" className="decisions__controls__new__name" autoFocus />
-        <button className="decision__controls__new--cancel" onClick={::this.cancelNewDecision}>Cancel</button>
-        <button className="decision__controls__new--confirm" onClick={::this.confirmNewDecision}>Confirm</button>
+        <input className="decision__controls__new--cancel" onClick={::this.cancelNewDecision}>Cancel</button>
+        <button type="submit" className="decision__controls__new--confirm" onClick={::this.confirmNewDecision}>Confirm</button>
       </section>
     ) : (<button className="decision__controls--add" onClick={::this.addDecision}>Add</button>);
     return (
